@@ -1,0 +1,88 @@
+body {
+    background-color: #1e1e1e;
+    color: #f0e6d2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+h1, h2 {
+    text-align: center;
+    color: #ffd700;
+}
+a {
+    color: #ffd700;
+    text-decoration: underline;
+}
+a:visited {
+    color: #b8860b;
+}
+.card {
+    border: 2px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px;
+    width: 280px;
+    display: inline-block;
+    vertical-align: top;
+    background: #2e2e2e;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+.card:hover {
+    transform: scale(1.03);
+}
+.cardinfo {
+    border: 2px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px;
+    width: 480px;
+    height: 406px;
+    display: inline-block;
+    vertical-align: top;
+    background: #2e2e2e;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+form {
+    margin-top: 10px;
+}
+input[type="text"], input[type="number"], select {
+    width: 30%;
+    padding: 6px;
+    margin: 6px 0;
+    background-color: #333;
+    color: #f0e6d2;
+    border: 1px solid #555;
+    border-radius: 4px;
+}
+button {
+    background-color: #ffd700;
+    color: #1e1e1e;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30%;
+    margin-top: 5px;
+    font-weight: bold;
+}
+button:hover {
+    background-color: #e0c200;
+}
+button[name="delete"] {
+    background-color: #d9534f;
+}
+button[name="delete"]:hover {
+    background-color: #c9302c;
+}
+.top-controls {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
