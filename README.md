@@ -1,6 +1,8 @@
 # Magic: the Gathering - Card Collection Manager
 A self-hosted, lightweight Magic: The Gathering collection manager that integrates with the [Scryfall API](https://scryfall.com/docs/api) to fetch official card data and images. You can view, add, update, and remove cards in your collection with a clean UI — all while keeping full control over your local database and image files.
 
+A live, view-only version can be accessed [here](https://horta.classicgames.com.br/magic)
+
 <img width="1099" height="898" alt="image" src="https://github.com/user-attachments/assets/2bc2272e-ec36-4ed8-915d-2155d3a73057" />
 
 ## ✨ Features
