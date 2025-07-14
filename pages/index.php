@@ -32,11 +32,11 @@ else {
 <h3>Add New Card</h3>
 <form method="post" action="../actions/add_card.php">
     <label>Card ID:</label><br>
-    <input type="text" name="new_id"><br>
+    <input type="text" placeholder="A card UUID from Scryfall, eg: 56ebc372-aabd-4174-a943-c7bf59e5028d" name="new_id"><br>
     <label>Card Code:</label><br>
-    <input type="text" name="new_code"><br>
+    <input type="text" placeholder="Set 3 letter abbreviation, eg: M20" name="new_code"><br>
     <label>Card Number:</label><br>
-    <input type="number" name="new_number"><br>
+    <input type="number" placeholder="Card number, eg: 123" name="new_number"><br>
     <label>Quantity:</label><br>
     <input type="number" name="new_quantity" min="1" value="1" required><br>
     <button type="submit" name="add_card">Add Card</button>

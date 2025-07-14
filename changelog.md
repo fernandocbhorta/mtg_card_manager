@@ -31,15 +31,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.1.0] - _Planned_
+## [1.1.0] - 2025-07-14
 ### Added
 - Lightbox-style image previews for individual cards.
+- Improved `cardinfo` class for better visuals
+- Added a navigation bar in preparation for future releases
+- Placeholder text on input fields
+
+---
 
 ### Ideas for the future
+- Browse list of sets, and add cards directly from them
 - CSV/JSON import/export of personal collection.
 - Statistics and collection value summary view.
 - Basic user authentication
 - Database normalization
 - Docker Compose support for full app + MySQL stack with persistent volumes.
 - Sample `.env` configuration and secure credential management.
-- Improved `cardinfo` class for better visuals
