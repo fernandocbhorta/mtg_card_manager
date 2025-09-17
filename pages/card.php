@@ -11,10 +11,10 @@ if (!empty($_GET['id'])) {
     $params[] = '%' . $_GET['id'] . '%';
 } else {
     echo "<h2>No cards found.</h2>";
-    return http_response_code();
+    return http_response_code(404);
 }
 
-$stmt = $conn->prepare("SELECT * FROM mtg_cards $where");
+$stmt = $conn->prepare("SELECT id, oracle_id, name, DATE_FORMAT(released_at, '%M %e, %Y') 'release date', set_name, collector_number, rarity, type_line, oracle_text, prices, quantity FROM mtg_cards $where");
 $stmt->execute($params);
 $cards = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -31,6 +31,7 @@ if ($totalCards === 0) {
 foreach ($cards as $row):
     $id = $row['id'];
     $name = htmlspecialchars($row['name']);
+    $oracle_id = $row['oracle_id'];
     $imgPath = "../assets/images/png/$id.png";
     $prices = json_decode($row['prices'], true) ?? [];
     $price_usd = $prices['usd'] ?? 'N/A';
@@ -44,10 +45,7 @@ foreach ($cards as $row):
         <div class="cardinfo">
             <?php
             foreach ($row as $key => $value) {
-                if (in_array($key, [
-                    'lang', 'released_at', 'mana_cost', 'type_line', 'colors', 'oracle_text',
-                    'power', 'toughness', 'set_name', 'keywords', 'collector_number', 'rarity', 'quantity'
-                ])) {
+                if (!in_array($key, ['id', 'oracle_id', 'prices', 'name'])) {
                     if (is_array($value)) {
                         $value = implode(', ', $value);
                     }
@@ -55,11 +53,29 @@ foreach ($cards as $row):
                 }
             }
             ?>
-            <br><strong>Price:</strong> $<?= htmlspecialchars($price_usd) ?><br>
+            <strong>Price:</strong> $<?= htmlspecialchars($price_usd) ?>
         </div>
     </div>
+<?php endforeach;
 
-<?php endforeach; ?>
+// === Render additional cards
+$stmt2 = $conn->prepare("SELECT id, set_name, quantity FROM mtg_cards WHERE oracle_id LIKE '$oracle_id' AND id NOT LIKE '$id' ORDER BY released_at, collector_number");
+$stmt2->execute();
+$extras = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$totalExtras = count($extras);
+
+if ($totalExtras > 0) {
+    echo '<h3>See also </h3>';
+    // === Render additional results
+    foreach ($extras as $row):
+        $id = $row['id'];
+        $imgPath = "../assets/images/png/$id.png";
+        ?>
+        <a href="card.php?id=<?= $id ?>">
+            <img src="<?= $imgPath ?>" title="<?= $row['set_name'].' - x'.$row['quantity'] ?>" alt="<?= $row['set_name'].' - x'.$row['quantity'] ?>" style="width: 15%;">
+        </a>
+    <?php endforeach;
+}?>
 
 <!-- === Lightbox Logic -->
 <script>
@@ -68,4 +84,4 @@ function openLightbox(src) {
 }
 </script>
 
-<?php include '../includes/footer.php'; ?>
+<?php include_once '../includes/footer.php'; ?>
