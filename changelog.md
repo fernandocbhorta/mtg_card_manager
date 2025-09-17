@@ -40,11 +40,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.1.1] - 2025-09-17
+### Added
+- Added "see also" block on card detail to display their variants
+- Improved card detail to display only relevant fields
+
+---
+
 ### Ideas for the future
+- Find time to actually implement this ideas
 - Browse list of sets, and add cards directly from them
 - CSV/JSON import/export of personal collection.
 - Statistics and collection value summary view.
 - Basic user authentication
 - Database normalization
 - Docker Compose support for full app + MySQL stack with persistent volumes.
+
 - Sample `.env` configuration and secure credential management.
